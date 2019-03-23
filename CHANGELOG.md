@@ -6,6 +6,16 @@ All notable changes to nWeather will be documented in this file.
 
 ---
 
+## [0.1.2] - 2019-03-23
+
+### Added
+
+- add additional fields to fetched data
+
+### Changed
+
+- abstracted resolver logic
+
 ## [0.1.1] - 2019-03-23
 
 ### Added

@@ -10,8 +10,8 @@ nWeather is a GraphQL wrapper for the OpenWeatherMap REST endpoint.
 
 ## Getting Started
 
-1. Download this repo
-2. Unzip and open the directory in your favorite code editor
+1. Download this repository and unzip the project files
+2. Open the project directory in your favorite code editor
 3. In `env.sample.js`, input your OpenWeatherMap API Key
 4. `mv env.sample.js env.js`
 5. Install dependencies: `yarn install`
@@ -22,7 +22,8 @@ nWeather is a GraphQL wrapper for the OpenWeatherMap REST endpoint.
 
 ### Current Weather
 
-#### Browse by City Name
+<details>
+<summary>Browse by City Nme</summary>
 
 ```graphql
 query {
@@ -39,7 +40,10 @@ query {
 }
 ```
 
-#### Browse by ZIP
+</details>
+
+<details>
+<summary>Browse by ZIP</summary>
 
 ```graphql
 query {
@@ -56,7 +60,10 @@ query {
 }
 ```
 
-#### Browse by Coordinates
+</details>
+
+<details>
+<summary>Browse by Coordinates</summary>
 
 ```graphql
 query {
@@ -73,11 +80,14 @@ query {
 }
 ```
 
+</details>
+
 ### Forecast
 
 Forecast list is in 3-hour intervals (i.e. `limit: 3` returns 3 sets of data across a 9 hour span)
 
-#### Browse by ZIP
+<details>
+<summary>Browse by ZIP</summary>
 
 ```graphql
 query {
@@ -108,3 +118,5 @@ query {
   }
 }
 ```
+
+</details>

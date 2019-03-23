@@ -36,6 +36,9 @@ type SystemInfo {
   country: String!
   sunrise: Int!
   sunset: Int!
+  # Extras
+  sunriseTime: String!
+  sunsetTime: String!
 }
 
 type MainWeatherInfo {
@@ -57,6 +60,8 @@ type WeatherStatus {
   main: String!
   description: String!
   icon: String!
+  # Extras
+  iconLink: String!
 }
 
 scalar Coords
