@@ -1,0 +1,11 @@
+.DS_Store
+**/.DS_Store
+
+/node_modules
+**/node_modules
+
+*.log
+**/*.log
+
+env.js
+**/env.js

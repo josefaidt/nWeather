@@ -1,0 +1,51 @@
+type CurrentWeather {
+  _id: ID!
+  id: Int!
+  coord: Coordinates!
+  name: String!
+  sys: SystemInfo!
+  weather: [WeatherStatus!]!
+  main: MainWeatherInfo!
+  wind: WindInfo!
+  dt: Int!
+}
+
+type Coordinates {
+  lon: Float!
+  lat: Float!
+}
+
+type SystemInfo {
+  _id: ID!
+  id: Int!
+  message: Float!
+  country: String!
+  sunrise: Int!
+  sunset: Int!
+}
+
+type MainWeatherInfo {
+  temp: Float!
+  pressure: Int!
+  humidity: Int!
+  temp_min: Float!
+  temp_max: Float!
+}
+
+type WindInfo {
+  speed: Float!
+  deg: Float
+}
+
+type WeatherStatus {
+  id: Int!
+  main: String!
+  description: String!
+  icon: String!
+}
+
+scalar Coords
+
+type Query {
+  currentWeather(zip: Int, city: String, coords: Coords): CurrentWeather!
+}

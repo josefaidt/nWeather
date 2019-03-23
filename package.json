@@ -1,0 +1,33 @@
+{
+  "name": "weather-gql",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/app.js",
+    "lint:graphql": "graphql lint src/schema.json",
+    "format": "yarn format:eslint && yarn format:prettier",
+    "format:eslint": "eslint --configFile .eslintrc.js --fix src",
+    "format:prettier": "prettier --write **/*.graphql"
+  },
+  "devDependencies": {
+    "@josefaidt/eslint-config": "^0.1.4",
+    "eslint-plugin-graphql": "^3.0.3",
+    "graphql-cli": "^3.0.11",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.17.4",
+    "node-fetch": "^2.3.0",
+    "prisma-client-lib": "^1.28.5"
+  },
+  "lint-staged": {
+    "**/*.js": "yarn format:eslint",
+    "**/*.graphql": [
+      "yarn format:prettier",
+      "yarn lint:graphql"
+    ]
+  }
+}
