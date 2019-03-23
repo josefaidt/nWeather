@@ -10,6 +10,20 @@ type CurrentWeather {
   dt: Int!
 }
 
+type Forecast {
+  _id: ID!
+  cnt: Int!
+  list: [ForecastListItem!]!
+}
+
+type ForecastListItem {
+  dt: Int!
+  dt_txt: String!
+  main: MainWeatherInfo!
+  weather: [WeatherStatus!]!
+  wind: WindInfo!
+}
+
 type Coordinates {
   lon: Float!
   lat: Float!
@@ -26,8 +40,9 @@ type SystemInfo {
 
 type MainWeatherInfo {
   temp: Float!
-  pressure: Int!
   humidity: Int!
+  pressure: Float!
+  sea_level: Float!
   temp_min: Float!
   temp_max: Float!
 }
@@ -48,4 +63,11 @@ scalar Coords
 
 type Query {
   currentWeather(zip: Int, city: String, coords: Coords): CurrentWeather!
+  forecast(zip: Int, city: String, coords: Coords, limit: Int): Forecast!
+}
+
+enum LocationQuery {
+  zip
+  city
+  coords
 }

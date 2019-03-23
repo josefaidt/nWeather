@@ -14,7 +14,7 @@ const coordsType = new GraphQLInputObjectType({
 const resolvers = {
   Query: {
     currentWeather: (_, { zip, city, coords }) => {
-      if (zip && city) {
+      if ((zip && city) || (zip && coords) || (city && coords) || (zip && city && coords)) {
         throw new Error('Specify only one location argument')
       } else if (zip) {
         const url = constructQueryUrl('weather', { zip })
@@ -28,6 +28,33 @@ const resolvers = {
           .catch(console.error)
       } else if (coords.lat && coords.lon) {
         const url = constructQueryUrl('weather', { coords })
+        return fetch(url)
+          .then(res => res.json())
+          .catch(console.error)
+      } else if (coords && (!coords.lat || !coords.lon)) {
+        // TODO: properly handle coords filter, but no coord props
+        throw new Error('Specify coordinates')
+      } else {
+        throw new Error('Specify at least one argument')
+      }
+    },
+    forecast: (_, { zip, city, coords, limit }) => {
+      const count = limit || 8 // count=8 is one day of data
+      if ((zip && city) || (zip && coords) || (city && coords) || (zip && city && coords)) {
+        throw new Error('Specify only one location argument')
+      } else if (zip) {
+        const url = constructQueryUrl('forecast', { zip, limit: count })
+        console.log(url)
+        return fetch(url)
+          .then(res => res.json())
+          .catch(console.error)
+      } else if (city) {
+        const url = constructQueryUrl('forecast', { city, limit: count })
+        return fetch(url)
+          .then(res => res.json())
+          .catch(console.error)
+      } else if (coords.lat && coords.lon) {
+        const url = constructQueryUrl('forecast', { coords, limit: count })
         return fetch(url)
           .then(res => res.json())
           .catch(console.error)
@@ -60,7 +87,7 @@ const options = {
   port: 8000,
   endpoint: '/api',
   playground: '/playground',
-  defaultPlaygroundQuery: defaultQuery,
+  // defaultPlaygroundQuery: defaultQuery,
 }
 server.start(options, ({ port, endpoint, playground }) => {
   console.info(`Server is running on http://localhost:${port}`)
