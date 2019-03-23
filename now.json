@@ -3,6 +3,6 @@
   "name": "nWeather",
   "public": true,
   "builds": [
-    { "src": "src/app.js", "use": "@now/node" }
+    { "src": "src/app.js", "use": "@now/node-server" }
   ]
 }
