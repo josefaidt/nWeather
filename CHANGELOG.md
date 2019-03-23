@@ -6,6 +6,13 @@ All notable changes to nWeather will be documented in this file.
 
 ---
 
+## [0.1.1] - 2019-03-23
+
+### Added
+
+- OpenWeatherMap:
+  - Forecast information (5 day / 3 hour)
+
 ## [0.1.0] - 2019-03-22
 
 ### Added
