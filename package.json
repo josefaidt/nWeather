@@ -1,8 +1,8 @@
 {
   "name": "weather-gql",
-  "version": "0.1.0",
-  "main": "index.js",
-  "license": "MIT",
+  "version": "0.1.1",
+  "main": "src/app.js",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "node src/app.js",
     "lint:graphql": "graphql lint src/schema.json",
