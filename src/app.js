@@ -1,15 +1,7 @@
 const { GraphQLServer } = require('graphql-yoga')
-const { GraphQLObjectType, GraphQLInputObjectType, GraphQLFloat } = require('graphql') // CommonJS
+const { GraphQLInputObjectType, GraphQLFloat } = require('graphql') // CommonJS
 const fetch = require('node-fetch')
 const constructQueryUrl = require('./endpoints/openweathermap')
-
-const coordsType = new GraphQLInputObjectType({
-  name: 'CoordsType',
-  fields: {
-    lat: { type: GraphQLFloat },
-    lon: { type: GraphQLFloat },
-  },
-})
 
 const resolvers = {
   Query: {
@@ -20,6 +12,7 @@ const resolvers = {
         const url = constructQueryUrl('weather', { zip })
         return fetch(url)
           .then(res => res.json())
+          .then(json => console.log(typeof json))
           .catch(console.error)
       } else if (city) {
         const url = constructQueryUrl('weather', { city })

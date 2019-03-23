@@ -20,7 +20,9 @@ nWeather is a GraphQL wrapper for the OpenWeatherMap REST endpoint.
 
 ## Examples
 
-### Browse by City Name
+### Current Weather
+
+#### Browse by City Name
 
 ```graphql
 query {
@@ -37,7 +39,7 @@ query {
 }
 ```
 
-### Browse by ZIP
+#### Browse by ZIP
 
 ```graphql
 query {
@@ -54,7 +56,7 @@ query {
 }
 ```
 
-### Browse by Coordinates
+#### Browse by Coordinates
 
 ```graphql
 query {
@@ -66,6 +68,42 @@ query {
     }
     main {
       temp
+    }
+  }
+}
+```
+
+### Forecast
+
+Forecast list is in 3-hour intervals (i.e. `limit: 3` returns 3 sets of data across a 9 hour span)
+
+#### Browse by ZIP
+
+```graphql
+query {
+  forecast(zip: 70802, limit: 3) {
+    cnt
+    list {
+      main {
+        temp
+        humidity
+        pressure
+        sea_level
+        temp_min
+        temp_max
+      }
+      weather {
+        main
+        description
+        id
+        icon
+      }
+      dt
+      dt_txt
+      wind {
+        speed
+        deg
+      }
     }
   }
 }
