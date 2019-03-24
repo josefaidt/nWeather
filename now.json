@@ -5,10 +5,8 @@
   "builds": [
     { "src": "src/app.js", "use": "@now/node-server" }
   ],
-  "build": {
-    "env": {
-      "NODE_ENV": "PRODUCTION",
-      "api_owm": "@owm-api-key"
-    }
+  "env": {
+    "NODE_ENV": "PRODUCTION",
+    "api_owm": "@owm-api-key"
   }
 }
