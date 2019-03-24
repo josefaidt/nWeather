@@ -10,6 +10,7 @@ All notable changes to nWeather will be documented in this file.
 
 ### Added
 
+- add ZEIT Now deployment
 - add additional fields to fetched data
 
 ### Changed
