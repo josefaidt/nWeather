@@ -2,11 +2,9 @@
   "version": 2,
   "name": "nWeather",
   "public": true,
-  "builds": [
-    { "src": "src/app.js", "use": "@now/node-server" }
-  ],
+  "builds": [{ "src": "src/app.js", "use": "@now/node-server" }],
   "env": {
     "NODE_ENV": "PRODUCTION",
-    "api_owm": "@owm-api-key"
+    "OWM_API_KEY": "@owm-api-key"
   }
 }

@@ -1,6 +1,6 @@
 const key =
-  process.env.NODE_ENV === 'production'
-    ? process.env.api_owm
+  process.env.NODE_ENV === 'PRODUCTION'
+    ? process.env.OWM_API_KEY
     : require('../../config/env').openweathermap.key
 
 const urlStructure = {
