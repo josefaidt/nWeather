@@ -4,5 +4,10 @@
   "public": true,
   "builds": [
     { "src": "src/app.js", "use": "@now/node-server" }
-  ]
+  ],
+  "build": {
+    "env": {
+      "api_owm": "@owm-api-key"
+    }
+  }
 }
