@@ -2,6 +2,7 @@ const { GraphQLServer } = require('graphql-yoga')
 const {
   owm: { currentWeather, forecast },
 } = require('./resolvers')
+const typeDefs = require('./typeDefs')
 
 const resolvers = {
   Query: {
@@ -24,12 +25,15 @@ const defaultQuery = `query {
 }`
 
 const logger = { log: e => console.log(e) }
-const server = new GraphQLServer({ typeDefs: './src/schema.graphql', logger, resolvers })
+const server = new GraphQLServer({ typeDefs: typeDefs, logger, resolvers })
 const options = {
-  port: 8000,
+  port: 80,
   endpoint: '/api',
-  playground: '/playground',
+  playground: '/',
   // defaultPlaygroundQuery: defaultQuery,
+}
+if (process.env.NODE_ENV === 'production') {
+  options.defaultPlaygroundQuery = defaultQuery
 }
 server.start(options, ({ port, endpoint, playground }) => {
   console.info(`Server is running on http://localhost:${port}`)
