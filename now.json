@@ -7,6 +7,7 @@
   ],
   "build": {
     "env": {
+      "env": "PRODUCTION",
       "api_owm": "@owm-api-key"
     }
   }
