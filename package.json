@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "node src/app.js",
+    "deploy": "now -e NODE_ENV=PRODUCTION -e OWM_API_KEY=@owm-api-key",
     "lint:graphql": "graphql lint src/schema.json",
     "format": "yarn format:eslint && yarn format:prettier",
     "format:eslint": "eslint --configFile .eslintrc.js --fix src",

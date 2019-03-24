@@ -3,6 +3,7 @@
   "name": "nWeather",
   "public": true,
   "builds": [{ "src": "src/app.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/api", "dest": "src/app.js" }],
   "env": {
     "NODE_ENV": "PRODUCTION",
     "OWM_API_KEY": "@owm-api-key"
