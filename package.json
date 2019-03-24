@@ -19,6 +19,7 @@
     "prettier": "^1.16.4"
   },
   "dependencies": {
+    "graphql": "^14.1.1",
     "graphql-yoga": "^1.17.4",
     "node-fetch": "^2.3.0",
     "prisma-client-lib": "^1.28.5"
