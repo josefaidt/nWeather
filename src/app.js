@@ -33,6 +33,6 @@ const options = {
 }
 server.start(options, ({ port, endpoint, playground }) => {
   console.info(`Server is running on http://localhost:${port}`)
-  console.info(`API is listening on http://localhost${endpoint}`)
-  console.info(`Playground is listening on http://localhost${playground}`)
+  console.info(`API is listening on http://localhost:${port}${endpoint}`)
+  console.info(`Playground is listening on http://localhost:${port}${playground}`)
 })
