@@ -1,12 +1,9 @@
 {
-  "projects": {
-    "nWeather": {
-      "schemaPath": "src/schema.graphql",
-      "extensions": {
-        "endpoints": {
-          "dev": "http://localhost:4000"
-        }
-      }
+  "schemaPath": "src/schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "dev": "http://localhost:4000",
+      "prod": "https://nweather.josefaidt.now.sh/api"
     }
   }
 }
