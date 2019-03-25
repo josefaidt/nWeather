@@ -1,4 +1,5 @@
-module.exports = `
+const { gql } = require('apollo-server')
+module.exports = gql`
 type CurrentWeather {
   _id: ID!
   id: Int!
