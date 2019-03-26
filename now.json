@@ -1,14 +1,18 @@
 {
+  "name": "nweather",
+  "public": false,
   "version": 2,
-  "name": "nWeather",
-  "public": true,
   "builds": [
-    { "src": "src/app.js", "use": "@now/node-server" }
+    {
+      "src": "src/**/*.js",
+      "use": "@now/node-server",
+      "config": { "maxLambdaSize": "20mb", "methods": ["GET", "POST"] }
+    },
+    { "src": "static/index.html", "use": "@now/static" }
   ],
-  "build": {
-    "env": {
-      "env": "PRODUCTION",
-      "api_owm": "@owm-api-key"
-    }
+  "routes": [{ "src": "/api", "dest": "src/app.js" }],
+  "env": {
+    "NODE_ENV": "PRODUCTION",
+    "OWM_API_KEY": "@owm-api-key"
   }
 }

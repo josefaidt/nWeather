@@ -6,6 +6,24 @@ All notable changes to nWeather will be documented in this file.
 
 ---
 
+## [0.1.3] - 2019-03-25
+
+### Changed
+
+- change graphql-yoga to apollo-server
+- corrected ZEIT NOW deployment
+
+## [0.1.2] - 2019-03-23
+
+### Added
+
+- add ZEIT Now deployment
+- add additional fields to fetched data
+
+### Changed
+
+- abstracted resolver logic
+
 ## [0.1.1] - 2019-03-23
 
 ### Added
