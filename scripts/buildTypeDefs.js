@@ -15,7 +15,7 @@ const read = schemaFilePath => {
 }
 
 const write = schemaString => {
-  const outputString = `module.exports = \`\n${schemaString}\`\n`
+  const outputString = `const { gql } = require('apollo-server')\nmodule.exports = gql\`\n${schemaString}\`\n`
   return new Promise((resolve, reject) => {
     console.time('typeDef build')
     fs.writeFile(typeDefPath, outputString, err => {

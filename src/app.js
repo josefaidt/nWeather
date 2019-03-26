@@ -1,8 +1,12 @@
-const { GraphQLServer } = require('graphql-yoga')
+// const { GraphQLServer } = require('graphql-yoga')
+const { ApolloServer } = require('apollo-server')
 const {
   owm: { currentWeather, forecast },
 } = require('./resolvers')
 const typeDefs = require('./typeDefs')
+const endpoint = process.env.NODE_ENV
+  ? 'https://nweather.josefaidt.now.sh/api'
+  : `http://localhost:${4000}`
 
 const resolvers = {
   Query: {
@@ -24,19 +28,23 @@ const defaultQuery = `query {
   }
 }`
 
-const logger = { log: e => console.log(e) }
-const server = new GraphQLServer({ typeDefs: typeDefs, logger, resolvers })
-const options = {
-  port: 80,
-  endpoint: '/api',
-  playground: '/',
-  // defaultPlaygroundQuery: defaultQuery,
-}
-if (process.env.NODE_ENV === 'production') {
-  options.defaultPlaygroundQuery = defaultQuery
-}
-server.start(options, ({ port, endpoint, playground }) => {
-  console.info(`Server is running on http://localhost:${port}`)
-  console.info(`API is listening on http://localhost:${port}${endpoint}`)
-  console.info(`Playground is listening on http://localhost:${port}${playground}`)
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  // playground: true,
+  playground: {
+    settings: {
+      'editor.theme': 'dark',
+    },
+    tabs: [
+      {
+        endpoint: endpoint,
+        query: defaultQuery,
+      },
+    ],
+  },
+})
+server.listen({ port: process.env.PORT || 4000, endpoint: '/api' }).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`)
 })
