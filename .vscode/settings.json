@@ -1,5 +1,8 @@
 {
   "eslint.options": {
     "configFile": "./config/.eslintrc.js"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
   }
 }

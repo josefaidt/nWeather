@@ -4,26 +4,15 @@
 ![dev dependencies](https://img.shields.io/david/dev/josefaidt/nWeather.svg?style=flat-square)
 ![License](https://img.shields.io/github/license/josefaidt/nWeather.svg?style=flat-square)
 
-> **N**ot another **Weather** API
+> ***N**ot another **Weather** API*
 
-nWeather is a GraphQL wrapper for the OpenWeatherMap REST endpoint.
-
-## Getting Started
-
-1. Download this repository and unzip the project files
-2. Open the project directory in your favorite code editor
-3. In `env.sample.js`, input your OpenWeatherMap API Key
-4. `mv env.sample.js env.js`
-5. Install dependencies: `yarn install`
-6. Run the server: `yarn start`
-7. Navigate out to `http://localhost:8000/playground`
+nWeather is a GraphQL wrapper for the OpenWeatherMap REST endpoint. Visit the [ZEIT deployment](https://nweather.josefaidt.now.sh/api)
 
 ## Examples
 
 ### Current Weather
 
-<details>
-<summary>Browse by City Nme</summary>
+#### Browse by City Name
 
 ```graphql
 query {
@@ -40,10 +29,7 @@ query {
 }
 ```
 
-</details>
-
-<details>
-<summary>Browse by ZIP</summary>
+#### Browse by ZIP
 
 ```graphql
 query {
@@ -60,10 +46,7 @@ query {
 }
 ```
 
-</details>
-
-<details>
-<summary>Browse by Coordinates</summary>
+#### Browse by Coordinates
 
 ```graphql
 query {
@@ -80,14 +63,11 @@ query {
 }
 ```
 
-</details>
-
 ### Forecast
 
 Forecast list is in 3-hour intervals (i.e. `limit: 3` returns 3 sets of data across a 9 hour span)
 
-<details>
-<summary>Browse by ZIP</summary>
+#### Browse by ZIP
 
 ```graphql
 query {
@@ -118,8 +98,6 @@ query {
   }
 }
 ```
-
-</details>
 
 ## Follow the Progress
 
