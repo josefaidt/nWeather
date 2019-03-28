@@ -1,6 +1,6 @@
 const { UserInputError } = require('apollo-server')
 const fetch = require('node-fetch')
-const constructQueryUrl = require('../endpoints/openweathermap')
+const constructQueryUrl = require('../lib/openweathermap')
 const addFields = require('../lib/addFields')
 
 const currentWeather = (parent, args) => {

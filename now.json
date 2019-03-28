@@ -10,7 +10,10 @@
     },
     { "src": "static/index.html", "use": "@now/static" }
   ],
-  "routes": [{ "src": "/api", "dest": "src/app.js" }],
+  "routes": [
+    { "src": "/api", "dest": "src/app.js" },
+    { "src": "/", "dest": "static/index.html" }
+  ],
   "env": {
     "NODE_ENV": "PRODUCTION",
     "OWM_API_KEY": "@owm-api-key"

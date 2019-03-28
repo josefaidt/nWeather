@@ -1,50 +1,37 @@
-// const { GraphQLServer } = require('graphql-yoga')
-const { ApolloServer } = require('apollo-server')
-const {
-  owm: { currentWeather, forecast },
-} = require('./resolvers')
-const typeDefs = require('./typeDefs')
-const endpoint = process.env.NODE_ENV
-  ? 'https://nweather.josefaidt.now.sh/api'
-  : `http://localhost:${4000}`
+const config = require('./config')
+const server1 = require('./api-wrapper')
+const server2 = require('./api-polished')
 
-const resolvers = {
-  Query: {
-    currentWeather,
-    forecast,
+const url = process.env.NODE_ENV
+  ? config.endpoint.prod
+  : `${config.endpoint.dev}:${config.apis.wrapper.port}`
+
+const playground = {
+  settings: {
+    'editor.theme': 'dark',
   },
+  tabs: [
+    {
+      endpoint: `${url}/api/v1`,
+      query: server1.defaultQuery,
+    },
+    {
+      endpoint: `${url}/api/v2`,
+      query: server2.defaultQuery,
+    },
+  ],
 }
 
-const defaultQuery = `query {
-  currentWeather(zip: 70769) {
-    name
-    weather {
-      main
-      description
-    }
-    main {
-      temp
-    }
-  }
-}`
+server1.instance.playgroundOptions = { ...playground }
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  introspection: true,
-  // playground: true,
-  playground: {
-    settings: {
-      'editor.theme': 'dark',
-    },
-    tabs: [
-      {
-        endpoint: endpoint,
-        query: defaultQuery,
-      },
-    ],
-  },
-})
-server.listen({ port: process.env.PORT || 4000, endpoint: '/api' }).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`)
-})
+server1.instance
+  .listen({ port: process.env.PORT || config.apis.wrapper.port, endpoint: '/api/v1' })
+  .then(({ url }) => {
+    console.log(`🎭  Playground ready at ${url}`)
+    console.log(`🚀  API v1 ready at ${url}/api/v1`)
+  })
+server2.instance
+  .listen({ port: process.env.PORT2 || config.apis.polished.port, endpoint: '/api/v2' })
+  .then(({ url }) => {
+    console.log(`🚀  API v2 ready at ${url}/api/v2`)
+  })

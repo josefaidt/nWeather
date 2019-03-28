@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const constructQueryUrl = require('../endpoints/openweathermap')
+const constructQueryUrl = require('./openweathermap')
 const addFields = require('./addFields')
 
 const handleCurrentWeather = async locationArgs => {
