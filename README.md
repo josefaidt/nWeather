@@ -98,7 +98,3 @@ query {
   }
 }
 ```
-
-## Follow the Progress
-
-Visit the [kanban board](https://www.notion.so/josefaidt/2facc4e612004ffc8ff2188279b7e54e?v=5cec66a4ee084c64ab4727d1fd5cb863) for more information.
